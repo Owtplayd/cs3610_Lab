@@ -3,7 +3,7 @@ from CustomerBuilderApp.CustomerProductClass import Customer
 
 
 class Director:
-    """Director class that executes build steps in a required order."""
+    """Director class that enforces the required build sequence."""
 
     def __init__(self, builder: CustomerBuilder) -> None:
         self._builder = builder
@@ -19,7 +19,6 @@ class Director:
         secondaryMobileNumber: str,
     ) -> Customer:
 
-        # EXACT ORDER REQUIRED BY ASSIGNMENT
         self._builder.firstName(firstName)
         self._builder.middleName(middleName)
         self._builder.lastName(lastName)
@@ -28,4 +27,4 @@ class Director:
         self._builder.primaryMobileNumber(primaryMobileNumber)
         self._builder.secondaryMobileNumber(secondaryMobileNumber)
 
-        return self._builder.build()
+        return self._builder.product

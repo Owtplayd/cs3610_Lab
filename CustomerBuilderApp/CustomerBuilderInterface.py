@@ -3,18 +3,24 @@ from CustomerBuilderApp.CustomerProductClass import Customer
 
 
 class CustomerBuilder(ABC):
-    """Builder interface declaring all possible build steps."""
+    """Builder interface declaring all required steps."""
+
+    @property
+    @abstractmethod
+    def product(self) -> Customer:
+        """Return the final built product."""
+        pass
 
     @abstractmethod
     def firstName(self, value: str):
         pass
 
     @abstractmethod
-    def lastName(self, value: str):
+    def middleName(self, value: str):
         pass
 
     @abstractmethod
-    def middleName(self, value: str):
+    def lastName(self, value: str):
         pass
 
     @abstractmethod
@@ -31,9 +37,4 @@ class CustomerBuilder(ABC):
 
     @abstractmethod
     def secondaryMobileNumber(self, value: str):
-        pass
-
-    @abstractmethod
-    def build(self) -> Customer:
-        """Returns the final product"""
         pass

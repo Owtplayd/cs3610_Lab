@@ -5,37 +5,37 @@ from CustomerBuilderApp.DirectorClass import Director
 
 def runCustomerBuilderDemo():
 
-    print("=== Building Customer via WebAppBuilder (all fields) ===")
+    print("=== Building Customer (Web App) ===")
     web_builder = WebAppBuilder()
     director = Director(web_builder)
 
     customer1 = director.constructCustomer(
         "John",
-        "A.",
+        "Anthony",
         "Doe",
-        "john.doe@example.com",
+        "john@example.com",
         "john.alt@example.com",
         "123-456-7890",
-        "321-654-0987",
+        "987-654-3210",
     )
 
-    print(customer1)
+    customer1.showCustomer()
 
-    print("\n=== Building Customer via MobileAppBuilder (mandatory only) ===")
+    print("\n=== Building Customer (Mobile App) ===")
     mobile_builder = MobileAppBuilder()
     director = Director(mobile_builder)
 
     customer2 = director.constructCustomer(
         "Sarah",
-        "",  # middleName ignored
+        "",
         "Khan",
         "sarah@example.com",
-        "",  # secondaryEmail ignored
+        "",
         "222-333-4444",
-        "",  # secondaryMobile ignored
+        "",
     )
 
-    print(customer2)
+    customer2.showCustomer()
 
 
 if __name__ == "__main__":

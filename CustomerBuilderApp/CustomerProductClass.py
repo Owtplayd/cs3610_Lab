@@ -1,24 +1,24 @@
 class Customer:
-    """Product class: represents the final Customer object."""
+    """Product class built step-by-step by a Builder."""
 
     def __init__(self) -> None:
-        self.firstName: str = ""
-        self.lastName: str = ""
-        self.middleName: str = ""
-        self.primaryEmail: str = ""
-        self.secondaryEmail: str = ""
-        self.primaryMobileNumber: str = ""
-        self.secondaryMobileNumber: str = ""
+        self._components = []  # List of ("fieldName", value)
+
+    def add(self, fieldName: str, value: str) -> None:
+        """Add a field/value pair to the customer object."""
+        print(f"Adding component: {fieldName} = {value}")
+        self._components.append((fieldName, value))
+
+    def showCustomer(self) -> None:
+        """Display final components."""
+        print("\n=== Final Customer Object ===")
+        for field, value in self._components:
+            print(f"{field}: {value}")
 
     def __str__(self) -> str:
-        return (
-            f"Customer(\n"
-            f"  firstName='{self.firstName}',\n"
-            f"  middleName='{self.middleName}',\n"
-            f"  lastName='{self.lastName}',\n"
-            f"  primaryEmail='{self.primaryEmail}',\n"
-            f"  secondaryEmail='{self.secondaryEmail}',\n"
-            f"  primaryMobileNumber='{self.primaryMobileNumber}',\n"
-            f"  secondaryMobileNumber='{self.secondaryMobileNumber}'\n"
-            f")"
-        )
+        """Pretty print for debugging."""
+        output = "Customer(\n"
+        for field, value in self._components:
+            output += f"  {field} = {value}\n"
+        output += ")"
+        return output

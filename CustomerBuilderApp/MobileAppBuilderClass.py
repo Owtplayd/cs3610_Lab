@@ -3,41 +3,39 @@ from CustomerBuilderApp.CustomerProductClass import Customer
 
 
 class MobileAppBuilder(CustomerBuilder):
-    """Concrete Builder for Mobile App.
-    Supports ONLY mandatory fields.
-    Optional fields produce no effect.
-    """
+    """Concrete Builder: Mobile App only collects mandatory fields."""
 
     def __init__(self) -> None:
         self._customer = Customer()
 
+    @property
+    def product(self) -> Customer:
+        return self._customer
+
     def firstName(self, value: str):
-        self._customer.firstName = value
+        self._customer.add("firstName", value)
+        return self
+
+    def middleName(self, value: str):
+        # Optional field ignored
         return self
 
     def lastName(self, value: str):
-        self._customer.lastName = value
-        return self
-
-    # Unsupported field → ignore
-    def middleName(self, value: str):
+        self._customer.add("lastName", value)
         return self
 
     def primaryEmail(self, value: str):
-        self._customer.primaryEmail = value
+        self._customer.add("primaryEmail", value)
         return self
 
-    # Unsupported field → ignore
     def secondaryEmail(self, value: str):
+        # Optional field ignored
         return self
 
     def primaryMobileNumber(self, value: str):
-        self._customer.primaryMobileNumber = value
+        self._customer.add("primaryMobileNumber", value)
         return self
 
-    # Unsupported field → ignore
     def secondaryMobileNumber(self, value: str):
+        # Optional field ignored
         return self
-
-    def build(self) -> Customer:
-        return self._customer
